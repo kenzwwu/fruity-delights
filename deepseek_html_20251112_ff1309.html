@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruity Delights - Colorful Jelly Candies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for Colors */
+        :root {
+            --pink: #FF9ECF;
+            --orange: #FFB347;
+            --yellow: #FFE066;
+            --purple: #C9A0FF;
+            --green: #A8E6CF;
+            --white: #FFFFFF;
+            --text-dark: #333333;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+
+        p {
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pink), var(--orange), var(--yellow), var(--green), var(--purple));
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--pink), var(--orange));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow);
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--pink), var(--orange), var(--yellow));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin: 0 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--pink);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--pink);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--pink);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--pink), var(--orange), var(--yellow));
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="white" opacity="0.1"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: var(--yellow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--pink);
+            margin-bottom: 15px;
+        }
+
+        .size-selector {
+            margin-bottom: 15px;
+        }
+
+        .size-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .size-option {
+            padding: 5px 10px;
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .size-option.active {
+            background-color: var(--pink);
+            color: white;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            margin: 0 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .add-to-cart {
+            margin-top: auto;
+            width: 100%;
+        }
+
+        /* Flavors Section */
+        .flavors-section {
+            background: linear-gradient(135deg, var(--green), var(--yellow));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flavors-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="white" opacity="0.1"/></svg>');
+            background-size: cover;
+        }
+
+        .flavors-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .flavors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .flavor-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .flavor-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .flavor-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .flavor-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .flavor-description {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 350px;
+            height: 100vh;
+            background-color: var(--white);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1100;
+            transition: right 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-modal.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        .cart-items {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            background-color: var(--yellow);
+            border-radius: 10px;
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--pink);
+            font-weight: 700;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .cart-quantity-btn {
+            width: 25px;
+            height: 25px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .cart-quantity-input {
+            width: 30px;
+            text-align: center;
+            margin: 0 5px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 2px;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .checkout-btn {
+            width: 100%;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.4s ease;
+            }
+            
+            nav.active {
+                max-height: 300px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            
+            nav li {
+                margin: 10px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .cart-modal {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 40px 0;
+            }
+            
+            .cart-modal {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-img">
+                    <!-- Logo placeholder - in a real implementation, you would use the actual logo image -->
+                    <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--pink), var(--orange)); border-radius: 10px; display: flex; justify-content: center; align-items: center; color: white; font-weight: bold;">FD</div>
+                </div>
+                <div class="logo-text">Fruity Delights</div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#flavors">Flavors</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <a href="#" class="cart-icon" id="cartIcon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Sweet, Colorful & Delicious Jelly Candies</h1>
+            <p>Experience the burst of fruity flavors in every bite! Our jelly candies are made with real fruit juice and natural colors.</p>
+            <a href="#shop" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section class="section" id="shop">
+        <div class="container">
+            <h2 class="section-title">Our Sweet Collection</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image" style="background-color: var(--pink);">
+                        <span>🍓</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Strawberry Bliss</h3>
+                        <p class="product-price">₱5 - ₱85</p>
+                        
+                        <div class="size-selector">
+                            <div class="size-options">
+                                <div class="size-option active" data-price="5">3 pcs</div>
+                                <div class="size-option" data-price="15">10 pcs</div>
+                                <div class="size-option" data-price="30">20 pcs</div>
+                                <div class="size-option" data-price="50">31 pcs</div>
+                                <div class="size-option" data-price="85">Tub</div>
+                            </div>
+                        </div>
+                        
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        
+                        <button class="btn add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image" style="background-color: var(--orange);">
+                        <span>🍊</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Orange Zest</h3>
+                        <p class="product-price">₱5 - ₱85</p>
+                        
+                        <div class="size-selector">
+                            <div class="size-options">
+                                <div class="size-option active" data-price="5">3 pcs</div>
+                                <div class="size-option" data-price="15">10 pcs</div>
+                                <div class="size-option" data-price="30">20 pcs</div>
+                                <div class="size-option" data-price="50">31 pcs</div>
+                                <div class="size-option" data-price="85">Tub</div>
+                            </div>
+                        </div>
+                        
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        
+                        <button class="btn add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image" style="background-color: var(--purple);">
+                        <span>🍇</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Grape Burst</h3>
+                        <p class="product-price">₱5 - ₱85</p>
+                        
+                        <div class="size-selector">
+                            <div class="size-options">
+                                <div class="size-option active" data-price="5">3 pcs</div>
+                                <div class="size-option" data-price="15">10 pcs</div>
+                                <div class="size-option" data-price="30">20 pcs</div>
+                                <div class="size-option" data-price="50">31 pcs</div>
+                                <div class="size-option" data-price="85">Tub</div>
+                            </div>
+                        </div>
+                        
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        
+                        <button class="btn add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image" style="background-color: var(--green);">
+                        <span>🫐</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Mixed Berries</h3>
+                        <p class="product-price">₱5 - ₱85</p>
+                        
+                        <div class="size-selector">
+                            <div class="size-options">
+                                <div class="size-option active" data-price="5">3 pcs</div>
+                                <div class="size-option" data-price="15">10 pcs</div>
+                                <div class="size-option" data-price="30">20 pcs</div>
+                                <div class="size-option" data-price="50">31 pcs</div>
+                                <div class="size-option" data-price="85">Tub</div>
+                            </div>
+                        </div>
+                        
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1">
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        
+                        <button class="btn add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flavors Section -->
+    <section class="section flavors-section" id="flavors">
+        <div class="container flavors-container">
+            <h2 class="section-title">Our Fruity Flavors</h2>
+            <div class="flavors-grid">
+                <!-- Flavor 1 -->
+                <div class="flavor-card">
+                    <div class="flavor-icon">🍓</div>
+                    <h3 class="flavor-name">Strawberry</h3>
+                    <p class="flavor-description">Sweet and tangy strawberry flavor that will make your taste buds dance!</p>
+                    <a href="#shop" class="btn">Shop Now</a>
+                </div>
+                
+                <!-- Flavor 2 -->
+                <div class="flavor-card">
+                    <div class="flavor-icon">🍊</div>
+                    <h3 class="flavor-name">Orange</h3>
+                    <p class="flavor-description">Zesty and refreshing orange flavor that brings a burst of sunshine.</p>
+                    <a href="#shop" class="btn">Shop Now</a>
+                </div>
+                
+                <!-- Flavor 3 -->
+                <div class="flavor-card">
+                    <div class="flavor-icon">🍇</div>
+                    <h3 class="flavor-name">Grapes</h3>
+                    <p class="flavor-description">Rich and sweet grape flavor that's simply irresistible.</p>
+                    <a href="#shop" class="btn">Shop Now</a>
+                </div>
+                
+                <!-- Flavor 4 -->
+                <div class="flavor-card">
+                    <div class="flavor-icon">🫐</div>
+                    <h3 class="flavor-name">Mixed Berries</h3>
+                    <p class="flavor-description">A delightful mix of strawberry, blueberry, and raspberry flavors.</p>
+                    <a href="#shop" class="btn">Shop Now</a>
+                </div>
+                
+                <!-- Flavor 5 -->
+                <div class="flavor-card">
+                    <div class="flavor-icon">🍍</div>
+                    <h3 class="flavor-name">Pineapple</h3>
+                    <p class="flavor-description">Tropical pineapple flavor that will transport you to a sunny beach.</p>
+                    <a href="#shop" class="btn">Shop Now</a>
+                </div>
+                
+                <!-- Flavor 6 -->
+                <div class="flavor-card">
+                    <div class="flavor-icon">🍹</div>
+                    <h3 class="flavor-name">Four Seasons</h3>
+                    <p class="flavor-description">A special blend of four different fruit flavors in one delicious candy.</p>
+                    <a href="#shop" class="btn">Shop Now</a>
+                </div>
+                
+                <!-- Flavor 7 -->
+                <div class="flavor-card">
+                    <div class="flavor-icon">🥭</div>
+                    <h3 class="flavor-name">Mango</h3>
+                    <p class="flavor-description">Sweet and tropical mango flavor that's simply irresistible.</p>
+                    <a href="#shop" class="btn">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">Fruity Delights</div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/profile.php?id=61582479966069" class="social-link" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-link" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@fruity_delights?_t=ZS-90yaDLBbcos&_r=1" class="social-link" aria-label="TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+            <div class="copyright">
+                <p>© 2025 Fruity Delights, All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+            <p class="empty-cart-message">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">₱0</span>
+            </div>
+            <button class="btn checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+        
+        // Cart Functionality
+        const cartIcon = document.getElementById('cartIcon');
+        const cartModal = document.getElementById('cartModal');
+        const closeCart = document.getElementById('closeCart');
+        const overlay = document.getElementById('overlay');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartCount = document.querySelector('.cart-count');
+        
+        let cart = [];
+        
+        // Open Cart
+        cartIcon.addEventListener('click', (e) => {
+            e.preventDefault();
+            cartModal.classList.add('open');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close Cart
+        closeCart.addEventListener('click', () => {
+            cartModal.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        overlay.addEventListener('click', () => {
+            cartModal.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Size Selector
+        const sizeOptions = document.querySelectorAll('.size-option');
+        
+        sizeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const parent = option.parentElement;
+                parent.querySelectorAll('.size-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                option.classList.add('active');
+                
+                // Update price display
+                const price = option.getAttribute('data-price');
+                const productCard = option.closest('.product-card');
+                const priceDisplay = productCard.querySelector('.product-price');
+                priceDisplay.textContent = `₱${price}`;
+            });
+        });
+        
+        // Quantity Selector
+        const quantityMinusBtns = document.querySelectorAll('.quantity-btn.minus');
+        const quantityPlusBtns = document.querySelectorAll('.quantity-btn.plus');
+        const quantityInputs = document.querySelectorAll('.quantity-input');
+        
+        quantityMinusBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                let value = parseInt(quantityInputs[index].value);
+                if (value > 1) {
+                    value--;
+                    quantityInputs[index].value = value;
+                }
+            });
+        });
+        
+        quantityPlusBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                let value = parseInt(quantityInputs[index].value);
+                value++;
+                quantityInputs[index].value = value;
+            });
+        });
+        
+        // Add to Cart
+        const addToCartBtns = document.querySelectorAll('.add-to-cart');
+        
+        addToCartBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                const productCard = btn.closest('.product-card');
+                const productName = productCard.querySelector('.product-name').textContent;
+                const activeSize = productCard.querySelector('.size-option.active');
+                const size = activeSize.textContent;
+                const price = parseInt(activeSize.getAttribute('data-price'));
+                const quantity = parseInt(productCard.querySelector('.quantity-input').value);
+                
+                // Check if product already in cart
+                const existingItemIndex = cart.findIndex(item => 
+                    item.name === productName && item.size === size
+                );
+                
+                if (existingItemIndex !== -1) {
+                    // Update quantity if already in cart
+                    cart[existingItemIndex].quantity += quantity;
+                } else {
+                    // Add new item to cart
+                    cart.push({
+                        name: productName,
+                        size: size,
+                        price: price,
+                        quantity: quantity
+                    });
+                }
+                
+                updateCart();
+                
+                // Show confirmation
+                btn.textContent = 'Added!';
+                setTimeout(() => {
+                    btn.textContent = 'Add to Cart';
+                }, 1500);
+            });
+        });
+        
+        // Update Cart Display
+        function updateCart() {
+            // Clear cart items
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="empty-cart-message">Your cart is empty</p>';
+                cartTotal.textContent = '₱0';
+                cartCount.textContent = '0';
+                return;
+            }
+            
+            let total = 0;
+            let itemCount = 0;
+            
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                itemCount += item.quantity;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-image">
+                        <span>${getFlavorEmoji(item.name)}</span>
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">₱${item.price} (${item.size})</div>
+                        <div class="cart-item-quantity">
+                            <button class="cart-quantity-btn minus" data-index="${index}">-</button>
+                            <input type="number" class="cart-quantity-input" value="${item.quantity}" min="1" data-index="${index}">
+                            <button class="cart-quantity-btn plus" data-index="${index}">+</button>
+                            <button class="remove-item" data-index="${index}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            // Update total and count
+            cartTotal.textContent = `₱${total}`;
+            cartCount.textContent = itemCount;
+            
+            // Add event listeners to cart items
+            const cartMinusBtns = document.querySelectorAll('.cart-quantity-btn.minus');
+            const cartPlusBtns = document.querySelectorAll('.cart-quantity-btn.plus');
+            const cartQuantityInputs = document.querySelectorAll('.cart-quantity-input');
+            const removeItemBtns = document.querySelectorAll('.remove-item');
+            
+            cartMinusBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.getAttribute('data-index'));
+                    if (cart[index].quantity > 1) {
+                        cart[index].quantity--;
+                        updateCart();
+                    }
+                });
+            });
+            
+            cartPlusBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.getAttribute('data-index'));
+                    cart[index].quantity++;
+                    updateCart();
+                });
+            });
+            
+            cartQuantityInputs.forEach(input => {
+                input.addEventListener('change', () => {
+                    const index = parseInt(input.getAttribute('data-index'));
+                    const value = parseInt(input.value);
+                    if (value > 0) {
+                        cart[index].quantity = value;
+                        updateCart();
+                    }
+                });
+            });
+            
+            removeItemBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const index = parseInt(btn.getAttribute('data-index'));
+                    cart.splice(index, 1);
+                    updateCart();
+                });
+            });
+        }
+        
+        // Helper function to get emoji for flavor
+        function getFlavorEmoji(name) {
+            const emojiMap = {
+                'Strawberry Bliss': '🍓',
+                'Orange Zest': '🍊',
+                'Grape Burst': '🍇',
+                'Mixed Berries': '🫐',
+                'Pineapple Paradise': '🍍',
+                'Four Seasons': '🍹',
+                'Mango Tango': '🥭'
+            };
+            
+            return emojiMap[name] || '🍬';
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
